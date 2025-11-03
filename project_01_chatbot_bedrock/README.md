@@ -115,6 +115,9 @@ Generative AI QA testing ensures the quality and reliability of AI systems that 
 
  Add prompt evaluation metrics for GenAI QA
 
+<img width="1293" height="930" alt="image" src="https://github.com/user-attachments/assets/7cd7f982-73c7-460b-8120-82024c82f958" />
+<img width="1527" height="903" alt="image" src="https://github.com/user-attachments/assets/3a9d2f09-7585-46b7-b4c7-a672da9f705b" />
+
 👨‍💻 Author
 
 Shailesh Gaikwad
