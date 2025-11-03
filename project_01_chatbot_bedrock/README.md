@@ -1,108 +1,125 @@
-# 🧠 AWS GenAI QA Projects
+# 🤖 Project 01 – AWS GenAI Chatbot using Bedrock (Claude + Streamlit + Lambda)
 
-### 👨‍💻 Author: [Shailesh Gaikwad](https://www.linkedin.com/in/shaileshgaikwad9975/)
-> QA Engineer (Manual · ADAS · AI/ML Testing)  
-> Transitioning into **GenAI QA / Prompt Evaluation / AI Quality Engineering**
-
----
-
-## 📘 Overview
-This repository contains a collection of **end-to-end AWS + GenAI QA projects**, each designed to demonstrate real-world skills in **AI Testing**, **Prompt Evaluation**, and **Cloud QA Automation**.  
-
-All projects are tested locally using **Streamlit** and deployed with **AWS Bedrock**, **Lambda**, and **S3** services.
+## 📚 Overview
+This project demonstrates how to build a **Generative AI Chatbot** powered by **AWS Bedrock (Anthropic Claude 3.5 Sonnet)**.  
+It allows real-time AI conversations using a **Streamlit frontend** and an **AWS Lambda backend** that securely calls the Bedrock Runtime API.
 
 ---
 
-## 📂 Project List
+## 🧩 Project Structure
+project_01_chatbot_bedrock/
+│
+├── app.py # Streamlit UI for local chat interaction
+├── lambda_function.py # AWS Lambda backend function
+├── test_bedrock_chatbot.py # Local test script to validate Bedrock connection
+├── function.zip # Deployment package for Lambda
+├── requirements.txt # Python dependencies
+├── .gitignore # Ignore unnecessary files
+└── README.md # Project documentation
 
-### 🧩 [Project 01 – GenAI Chatbot (Claude 3.5 Sonnet)](project_01_chatbot_bedrock)
-> Build and test a **Generative AI Chatbot** using **AWS Bedrock (Claude 3.5)** and **Streamlit UI**.  
-> Includes QA evaluation layer to assess **clarity, accuracy, and relevance** of AI responses.
+User (Streamlit UI)
+│
+▼
+AWS Lambda Function
+│
+▼
+AWS Bedrock Runtime ──▶ Claude 3.5 Sonnet Model
+│
+▼
+Returns AI response to Streamlit interface
 
-🔹 Tech: `AWS Bedrock`, `Streamlit`, `boto3`, `Python`  
-🔹 Focus: *GenAI QA, Prompt Evaluation, Bedrock API Testing*
 
----
-
-### 📄 [Project 02 – AI Document Summarizer (Bedrock + Lambda + S3)](project_02_summarizer_lambda)
-> Automatically generate **summaries** for uploaded documents stored in S3.  
-> Uses AWS Lambda for automation and Claude for summarization.
-
-🔹 Tech: `AWS Lambda`, `S3`, `Bedrock`, `Python`  
-🔹 Focus: *Automation, File I/O Testing, Response Validation*
-
----
-
-### 💬 [Project 03 – Prompt Evaluation Framework](project_03_prompt_eval_framework)
-> A framework to test multiple prompts against GenAI models and evaluate outputs.  
-> Includes scoring metrics for **accuracy**, **completeness**, and **bias** detection.
-
-🔹 Tech: `Python`, `Bedrock`, `OpenAI Eval style`  
-🔹 Focus: *Prompt QA Evaluation, Test Automation, Scoring Systems*
 
 ---
 
-### 🔍 [Project 04 – RAG QnA System (Retrieval-Augmented Generation)](project_04_rag_qna_system)
-> Integrates AWS Bedrock with vector search for **document-based QnA**.  
-> Tests how retrieval quality impacts GenAI answer accuracy.
+## ⚙️ Setup Instructions
 
-🔹 Tech: `Bedrock`, `LangChain`, `FAISS`, `Python`  
-🔹 Focus: *RAG Testing, Context Evaluation, Precision/Recall QA*
-
----
-
-### ⚖️ [Project 05 – Multi-Model Evaluation System](project_05_multi_model_eval)
-> Compare responses from multiple GenAI models (Claude, Titan, Llama) side-by-side.  
-> Evaluate performance across different tasks and QA metrics.
-
-🔹 Tech: `AWS Bedrock`, `Python`, `Streamlit`  
-🔹 Focus: *Model Comparison, Response Benchmarking, QA Metrics*
+### 1️⃣ Prerequisites
+Before you start, make sure you have:
+- Python **3.9+**
+- An **AWS account** with **Bedrock access**
+- IAM role with permission: `bedrock:InvokeModel`
+- **Streamlit** installed locally
 
 ---
 
-### 🧠 [Project 06 – Human Feedback Evaluation System](project_06_human_feedback_system)
-> Implements a **human-in-the-loop QA feedback system** for GenAI outputs.  
-> Collects user feedback (👍👎) and updates model evaluation scores.
+### 2️⃣ Local Environment Setup
+Clone the repo:
+```bash
+git clone https://github.com/shailesh9975/aws-genai-qa-projects.git
+cd aws-genai-qa-projects/project_01_chatbot_bedrock
 
-🔹 Tech: `Streamlit`, `Bedrock`, `CSV Storage`, `Python`  
-🔹 Focus: *RLHF Simulation, Feedback QA, Continuous Improvement*
 
----
+python3 -m venv venv
+source venv/bin/activate     # On Windows: venv\Scripts\activate
 
-## 📈 Learning Goals
-Each project builds progressively to strengthen your skills in:
-- ✅ Manual & Exploratory Testing of GenAI Systems  
-- ✅ Prompt Evaluation & Quality Metrics  
-- ✅ AWS Bedrock Integration & Cloud QA  
-- ✅ AI Output Validation (Accuracy, Clarity, Relevance)  
-- ✅ Test Automation with Python  
 
----
 
-## 🧰 Tech Stack Summary
-| Category | Tools / Services |
-|-----------|------------------|
-| **Cloud / AI** | AWS Bedrock, Lambda, S3 |
-| **Models** | Claude 3.5 Sonnet, Titan Text |
-| **Frameworks** | Streamlit, LangChain |
-| **Languages** | Python (boto3, json) |
-| **QA Tools** | Manual QA, Prompt Testing, Evaluation Metrics |
+pip install -r requirements.txt
 
----
+streamlit run app.py
+Then open in your browser:
+🌐 http://localhost:8501
 
-## 📜 License
-This repository is for **learning and portfolio demonstration purposes**.  
-Feel free to fork or adapt for educational use with attribution.
+Ask questions like:
 
----
+“What is Generative AI QA testing?”
 
-## 🏁 Next Steps
-Coming Soon:
-- 🧩 Project 07 – Automated Prompt Regression Testing  
-- 📊 Project 08 – GenAI Performance Benchmark Dashboard
+“Explain AWS Bedrock in simple terms.”
 
----
+🧠 Lambda Deployment
+Step 1: Prepare Deployment Package
+zip -r function.zip lambda_function.py
 
-**⭐ If you find this useful, give the repo a star and connect with me on LinkedIn!**
-> _“Testing AI is the art of teaching machines to think better.”_
+Step 2: Deploy on AWS Lambda
+
+Go to AWS Console → Lambda → Create Function
+
+Choose “Author from scratch”
+
+Runtime: Python 3.10
+
+Upload function.zip
+
+Set environment variables (if needed)
+
+Attach IAM role with bedrock:InvokeModel permission
+
+🧪 Local Testing
+
+Run:
+
+python test_bedrock_chatbot.py
+
+
+Sample Output:
+
+🤖 Claude Response:
+Generative AI QA testing ensures the quality and reliability of AI systems that generate content...
+
+📊 Key Learnings
+
+✅ How to invoke AWS Bedrock models via boto3
+✅ Building a Streamlit-based GenAI frontend
+✅ Structuring cloud-based AI inference pipelines
+✅ Testing and validating Claude model outputs for QA
+
+🌍 Future Enhancements
+
+ Add multi-model support (Claude, Titan, Llama)
+
+ Integrate conversation history with DynamoDB
+
+ Deploy Streamlit app on AWS EC2 or Streamlit Cloud
+
+ Add prompt evaluation metrics for GenAI QA
+
+👨‍💻 Author
+
+Shailesh Gaikwad
+QA Engineer | AI/ML Validation | GenAI QA Tester
+🔗 GitHub
+ | LinkedIn
+
+“Testing AI is the art of teaching machines to think better.” 🧠
 
