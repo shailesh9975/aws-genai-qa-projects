@@ -8,14 +8,13 @@ It allows real-time AI conversations using a **Streamlit frontend** and an **AWS
 
 ## 🧩 Project Structure
 project_01_chatbot_bedrock/
-│
-├── app.py # Streamlit UI for local chat interaction
-├── lambda_function.py # AWS Lambda backend function
-├── test_bedrock_chatbot.py # Local test script to validate Bedrock connection
-├── function.zip # Deployment package for Lambda
-├── requirements.txt # Python dependencies
-├── .gitignore # Ignore unnecessary files
-└── README.md # Project documentation
+- app.py # Streamlit UI for local chat interaction
+- lambda_function.py # AWS Lambda backend function
+- test_bedrock_chatbot.py # Local test script to validate Bedrock connection
+- function.zip # Deployment package for Lambda
+- requirements.txt # Python dependencies
+- .gitignore # Ignore unnecessary files
+- README.md # Project documentation
 
 User (Streamlit UI)
 │
@@ -28,6 +27,8 @@ AWS Bedrock Runtime ──▶ Claude 3.5 Sonnet Model
 ▼
 Returns AI response to Streamlit interface
 
+User → Streamlit → AWS Lambda → AWS Bedrock → Claude 3.5 Sonnet → Response
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/cdaa3e0e-484a-45cd-bf73-41f69da0e140" />
 
 
 ---
